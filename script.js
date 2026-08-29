@@ -1,5 +1,29 @@
+function getStoredTheme() {
+    var savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+        return savedTheme;
+    }
+
+    return 'dark';
+}
+
+function applyTheme(theme) {
+    document.body.classList.toggle('theme-light', theme === 'light');
+    document.body.classList.toggle('theme-dark', theme === 'dark');
+    document.body.style.backgroundColor = theme === 'light' ? '#fbeeff' : '#121212';
+    document.body.style.color = theme === 'light' ? '#1f1f1f' : '#f5f5f5';
+
+    var toggleButton = document.getElementById('theme-toggle');
+    if (toggleButton) {
+        toggleButton.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
+    }
+}
+
 // Load todos from localStorage at startup
 document.addEventListener('DOMContentLoaded', function() {
+    var theme = getStoredTheme();
+    applyTheme(theme);
+
     var todos = JSON.parse(localStorage.getItem('todos')) || [];
     todos.forEach(addItem);
 });
@@ -11,6 +35,13 @@ document.getElementById('add-todo').addEventListener('click', function() {
         document.getElementById('todo-input').value = '';
         saveTodos();
     }
+});
+
+document.getElementById('theme-toggle').addEventListener('click', function() {
+    var currentTheme = document.body.classList.contains('theme-light') ? 'light' : 'dark';
+    var nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', nextTheme);
+    applyTheme(nextTheme);
 });
 
 function addItem(text) {
@@ -27,7 +58,6 @@ function addItem(text) {
     });
 
     item.appendChild(deleteButton);
-
     list.appendChild(item);
 }
 

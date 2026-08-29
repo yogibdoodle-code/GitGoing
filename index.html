@@ -2,16 +2,19 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="style.css?v=2">
 </head>
 
 <body>
     <div class="todo-container">
         <h1>Yogi To do list!!!</h1>
         <p>Welcome to Yogi's todo list!</p>
-        <input type="text" id="todo-input" placeholder="Add a task">
-        <button id="add-todo">Add</button>
+        <div class="todo-controls">
+            <input type="text" id="todo-input" placeholder="Add a task">
+            <button id="add-todo">Add</button>
+            <button id="theme-toggle" type="button" aria-label="Toggle color theme">Dark mode</button>
+        </div>
         <ul id="todo-list"></ul>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 </body>
