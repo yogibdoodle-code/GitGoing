@@ -39,7 +39,9 @@ body.theme-light .todo-container {
 #todo-input,
 #add-todo,
 #theme-toggle,
-#todo-list li button {
+#clear-completed,
+#todo-list li button,
+#todo-list li input[type="checkbox"] {
     font: inherit;
 }
 
@@ -60,7 +62,8 @@ body.theme-light #todo-input {
 }
 
 #add-todo,
-#theme-toggle {
+#theme-toggle,
+#clear-completed {
     padding: 8px 12px;
     border: none;
     border-radius: 4px;
@@ -70,8 +73,24 @@ body.theme-light #todo-input {
 }
 
 body.theme-light #add-todo,
-body.theme-light #theme-toggle {
+body.theme-light #theme-toggle,
+body.theme-light #clear-completed {
     background-color: #7c3aed;
+}
+
+#add-todo:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#clear-completed {
+    margin-top: 12px;
+    background-color: #374151;
+}
+
+body.theme-light #clear-completed {
+    background-color: #e5e7eb;
+    color: #111827;
 }
 
 #todo-list {
@@ -81,6 +100,9 @@ body.theme-light #theme-toggle {
 }
 
 #todo-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     padding: 10px 80px 10px 10px;
     border: 1px solid #444;
     margin-bottom: 10px;
@@ -96,12 +118,22 @@ body.theme-light #todo-list li {
     color: #1f1f1f;
 }
 
-#todo-list li.done {
+#todo-list li input[type="checkbox"] {
+    margin: 0;
+    accent-color: #8b5cf6;
+}
+
+#todo-list li span {
+    flex: 1;
+    word-break: break-word;
+}
+
+#todo-list li.done span {
     text-decoration: line-through;
     color: #a1a1aa;
 }
 
-body.theme-light #todo-list li.done {
+body.theme-light #todo-list li.done span {
     color: #888;
 }
 
@@ -116,4 +148,19 @@ body.theme-light #todo-list li.done {
     color: #fff;
     padding: 6px 10px;
     cursor: pointer;
+}
+
+.empty-state {
+    display: none;
+    margin: 16px 0 0;
+    color: #9ca3af;
+    font-style: italic;
+}
+
+.empty-state.visible {
+    display: block;
+}
+
+body.theme-light .empty-state {
+    color: #6b7280;
 }

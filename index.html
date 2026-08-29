@@ -11,9 +11,11 @@
         <p>Welcome to Yogi's todo list!</p>
         <div class="todo-controls">
             <input type="text" id="todo-input" placeholder="Add a task">
-            <button id="add-todo">Add</button>
+            <button id="add-todo" type="button">Add</button>
             <button id="theme-toggle" type="button" aria-label="Toggle color theme">Dark mode</button>
         </div>
+        <button id="clear-completed" class="secondary-button" type="button">Clear completed</button>
+        <p id="empty-state" class="empty-state">No tasks yet. Add your first one!</p>
         <ul id="todo-list"></ul>
     </div>
     <script src="script.js?v=2"></script>
